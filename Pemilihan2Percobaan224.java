@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Pemilihan2Percobaan224 {
     public static void main(String[] args) {
         Scanner input24 = new Scanner(System.in);
-        String member;
+        String member, pembayaran;
         int menu;
         double total_bayar, diskon, harga;
         System.out.println("-------------------------");
@@ -18,8 +18,10 @@ public class Pemilihan2Percobaan224 {
         input24.nextLine();
         System.out.print("Apakah punya member (y/n) ? = ");
         member = input24.nextLine();
+        System.out.print("Pilih pembayaran (qris/tunai) = ");
+        pembayaran = input24.nextLine();
         System.out.println("--------------------------------------");
-        if (member.equalsIgnoreCase("y")) {
+        if (member.equals("y")) {
             diskon = 0.10;
             System.out.println("Besar diskon = 10%");
             if (menu == 1) {
@@ -39,8 +41,12 @@ public class Pemilihan2Percobaan224 {
                 return;
             }
             total_bayar = harga - (harga * diskon);
+            if (pembayaran.equalsIgnoreCase("qris")) {
+                total_bayar -= 1000;
+                System.out.println("Potongan qris = 1000");
+            }
             System.out.println("Total bayar setelah diskon = " + total_bayar);
-        } else if (member.equalsIgnoreCase("n")) {
+        } else if (member.equals("n")) {
             if (menu == 1) {
                 harga = 14000;
                 System.out.println("Harga ricebowl = " + harga);
@@ -56,6 +62,11 @@ public class Pemilihan2Percobaan224 {
             } else {
                 System.out.println("Masukkan pilihan menu dengan benar");
                 return;
+            }
+            if (pembayaran.equals("qris")) {
+                harga -= 1000;
+                System.out.println("Potongan qris = 1000");
+                System.out.println("Total bayar = " + harga);
             }
 
         } else {
